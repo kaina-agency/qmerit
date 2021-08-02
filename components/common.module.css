@@ -1,0 +1,18 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.header {
+  height: 80vh;
+  @media (min-width: 768px) {
+    height: 60vh;
+  }
+}
+
+section.form {
+  counter-reset: form-section;
+  margin-bottom:50px;
+}

@@ -1,0 +1,61 @@
+.container {
+  display: grid;
+  grid-template-columns: 5rem auto;
+  grid-template-rows: 3rem auto auto;
+  gap: 0px 0px;
+  grid-template-areas:
+    "number title"
+    "line questions"
+    "line buttons";
+
+  & .number {
+    grid-area: number;
+    &::before {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      counter-increment: form-section;
+      content: counter(form-section);
+    }
+    /* identical to box height, or 210% */
+  }
+  & .numberFinale {
+    &::before {     
+      content: '✓';
+    }
+    /* identical to box height, or 210% */
+  }
+  & .line {
+    grid-area: line;
+  }
+  & .lineFinale {
+    display:none;
+  }
+  & .title {
+    grid-area: title;
+  }
+  & .questions {
+    grid-area: questions;
+  }
+  & .buttons {
+    grid-area: buttons;
+  }
+  & .nextBtn {
+    width:260px;
+    height:46px;
+    padding: 16.5px 67.5px;    
+    border-radius:24px;
+    background:#1E80AB;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 13px;
+    display:none;
+    &:last-of-type {
+      display:block;
+    }
+  }
+}

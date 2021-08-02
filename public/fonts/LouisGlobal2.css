@@ -1,0 +1,17 @@
+@font-face {
+  font-family: "louis";
+  src: url("/fonts/LouisGlobal2-Reg.otf") format("opentype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "louis";
+  src: url("/fonts/LouisGlobal2-Bold.otf") format("opentype");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "louis";
+  src: url("/fonts/LouisGlobal2-Heavy.otf") format("opentype");
+  font-weight: 900;
+}

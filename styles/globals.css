@@ -1,0 +1,136 @@
+@import url("https://use.typekit.net/rlg1pge.css");
+@import url("/fonts/LouisGlobal2.css");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply text-black;
+  }
+
+  input[type="submit"],
+  input[type="button"] {
+    @apply cursor-pointer;
+  }
+}
+
+@layer components {
+  [aria-invalid='true']{
+    @apply text-error;
+    & .std-text-field {
+      @apply text-error border-error;
+    }
+    & .std-label {
+      @apply text-error;
+    }
+  }
+
+  .std-label {
+    @apply mt-2 ml-8 px-2 bg-white text-sm text-grey;
+    position: absolute;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    text-transform: capitalize;
+  }
+
+  .std-text-field {
+    @apply rounded-xl border-2 border-grey py-4 px-6 mx-4 my-4 text-grey;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    border-radius: 10px;
+    outline:none;
+  }
+
+  .std-error-label {
+    @apply text-error ml-4;
+  }
+
+  .std-select {
+    @apply rounded-full py-4 px-6 mx-4 my-4 text-grey bg-grey-light appearance-none;
+  }
+
+  .std-select-arrow {
+    @apply absolute mx-4 px-6 right-0 top-1/2 transform scale-x-150 -translate-y-1/3 pointer-events-none;
+    font-family: sans-serif;
+    font-weight: 100;
+  }
+  
+  .std-checkmark {
+    @apply absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white pointer-events-none;
+  }
+
+  .std-radio-checkmark {
+    @apply std-checkmark text-xl;
+  }
+
+  .std-radio {
+    @apply appearance-none border-grey-mid border-2 rounded-full bg-white h-8 w-8 align-middle;
+    &:checked {
+      @apply bg-blue px-2 py-2 border-none;
+    }
+  }
+
+  .std-input-container {
+    @apply -my-2 -mx-4;
+  }
+
+  .std-button {
+    @apply bg-blue font-bold cursor-pointer text-white uppercase inline-block text-center;
+    width: 260px;
+    height: 46px;
+    padding: 16.5px 67.5px;
+    border-radius: 24px;
+    font-size: 13px;
+    line-height: 13px;
+  }
+
+  .input-full-4 {
+    width: calc(100% - 2rem);
+  }
+}
+
+.form-transition-enter {
+  opacity: 0;
+  transform: translateY(-40px);
+}
+
+.form-transition-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 350ms, transform 350ms;
+  transition-timing-function: ease-out;
+}
+
+.mini-button{
+  @apply cursor-pointer;
+  border: 1px solid #efefef;
+  border-radius: 20px;
+  padding:10px 25px;
+  display:inline-block;
+  margin-bottom:20px;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: Roboto,-apple-system,BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
