@@ -56,14 +56,15 @@ export default function Terms({path}: TermsProps) {
         </span>
         <br className={path ==='path2' ? 'hidden':''} />
         <p className={path ==='path2' ? 'hidden':'text-grey'}>
-          {data.LANGUAGE == 'en' ? <>The Charged by Chevrolet Promotion is available to you as a part of your purchase or lease of a new 2022 Bolt EV or 2022 Bolt EUV from a participating Chevrolet dealer. Subject to the definitions, qualifications, limitations, and requirements set forth in these <a className="stat-text-link" href="https://www.chevroletchargingoffer.ca/home_install_terms.pdf" target="_blank" rel="noreferrer"><u>Terms and Conditions</u></a>, you may qualify to receive a home charging outlet installed at no additional cost to you, or an alternative charging promotion of your choice.</>
-            : <>La promotion Recharge par Chevrolet vous est offerte dans le cadre de votre achat ou location d’un véhicule Bolt EV 2022 ou Bolt EUV 2022 d’un concessionnaire Chevrolet. Sujet aux définitions, qualifications, limitations et exigences <a className="stat-text-link" href="https://www.offrerechargechevrolet.ca/modalites_installation_domicile.pdf" target="_blank" rel="noreferrer"><u>selon les modalités</u></a>,, vous pourriez vous qualifier pour obtenir une prise de recharge à domicile et l’installation sans frais supplémentaires ou une autre promotion de votre choix.</>
+          {data.LANGUAGE == 'en' ? <>The Charged by Chevrolet Promotion is available to you as a part of your purchase or lease of a new 2022 Bolt EV or 2022 Bolt EUV from a participating Chevrolet dealer. Subject to the definitions, qualifications, limitations, and requirements set forth in these <a className="stat-text-link" data-dtm="terms:personal info" href="https://www.chevroletchargingoffer.ca/home_install_terms.pdf" target="_blank" rel="noreferrer"><u>Terms and Conditions</u></a>, you may qualify to receive a home charging outlet installed at no additional cost to you, or an alternative charging promotion of your choice.</>
+            : <>La promotion Recharge par Chevrolet vous est offerte dans le cadre de votre achat ou location d’un véhicule Bolt EV 2022 ou Bolt EUV 2022 d’un concessionnaire Chevrolet. Sujet aux définitions, qualifications, limitations et exigences <a className="stat-text-link" data-dtm="terms:personal info" href="https://www.offrerechargechevrolet.ca/modalites_installation_domicile.pdf" target="_blank" rel="noreferrer"><u>selon les modalités</u></a>,, vous pourriez vous qualifier pour obtenir une prise de recharge à domicile et l’installation sans frais supplémentaires ou une autre promotion de votre choix.</>
           }
         </p>
         <div className={path ==='path2' ? 'hidden':''}>
           <div className="relative mr-2 inline-block">
             <input
               className={`${acceptsTerms ? 'bg-blue border-none' : 'bg-white border-grey-mid'} appearance-none border-2 rounded-lg h-6 w-6 align-middle block stat-checkbox`}
+              data-dtm="terms:opt-in"
               name="terms"
               type="checkbox"
               id="accept-terms"
@@ -86,6 +87,7 @@ export default function Terms({path}: TermsProps) {
           <div className="relative mr-2 inline-block">
             <input
               className={`${infoAcknowledgement ? 'bg-blue border-none' : 'bg-white border-grey-mid'} appearance-none border-2 rounded-lg h-6 w-6 align-middle block stat-checkbox`}
+              data-dtm="terms:personal info:opt-in"
               name="ack"
               type="checkbox"
               id="accept-ack"
