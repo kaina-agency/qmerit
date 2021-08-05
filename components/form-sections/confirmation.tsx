@@ -12,6 +12,10 @@ export const ConfirmationContext: FormSectionContext = {
 export default function Confirmation({ path }: { path: 'path1' | 'path2'}) {
   const { data } = useContext(ClientDataContext)
 
+  if (typeof window === 'object') {
+    if (_satellite) _satellite.track('thank-you')
+  }
+
   const confirmationMessage = (path === 'path1' || (path === 'path2' && data.VEHICLE_MODEL && data.VEHICLE_MODEL === 'ev' || data.VEHICLE_MODEL === 'euv')) ?
     <div>
       <p className="text-2xl mb-7">
@@ -37,7 +41,6 @@ export default function Confirmation({ path }: { path: 'path1' | 'path2'}) {
     </div>
 
   return (
-
     <FormSection finale={true}
       title={data.LANGUAGE ==='en' ? 'Confirmation'  : 'Votre requête a été envoyée.'}
       goNext={null}

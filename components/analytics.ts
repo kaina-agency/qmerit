@@ -1,5 +1,5 @@
 function analytics() {
-	if (process.browser) {
+	if (typeof window === 'object') {
 		window.addEventListener('load', () => {
 			const form = document.querySelector('form')
 			const orientation =
@@ -37,14 +37,15 @@ function analytics() {
 					'[class^=form-section_container]'
 				)
 				const currentSection = sections[sections.length - 1]
-				digitalData.siteSectionsLevel1 = currentSection
+				const currentSectionTitle = currentSection
 					.querySelector('[class^=form-section_title]')
 					['innerText'].toLowerCase()
 					.replace(/ /g, '-')
-				sections.forEach((section) => {
-					const nextButton = section.querySelector('input[value=Next]')
-					if (nextButton) console.log(nextButton)
-				})
+
+				if (digitalData.siteSectionsLevel1 !== currentSectionTitle) {
+					digitalData.siteSectionsLevel1 = currentSectionTitle
+					if (_satellite) _satellite.track('next-steps')
+				}
 			})
 			observer.observe(form, {
 				attributes: false,
