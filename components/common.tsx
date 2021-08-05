@@ -3,8 +3,9 @@ import { useClientData } from '../hooks/client-data'
 import Head from 'next/head'
 import styles from './common.module.css'
 import Form from './form'
+import analytics from './analytics'
 
-
+analytics()
 
 declare global {
   interface Window {
