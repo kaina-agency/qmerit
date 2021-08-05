@@ -6,13 +6,15 @@ interface FormSectionProps {
   title: string,
   finale?:boolean,
   label?:string,
-  goNext?: () => void
+  nextButtonDTM?: string,
+  goNext?: () => void,
 }
 
-export default function FormSection({ title, goNext, finale = false,label = null, children }: PropsWithChildren<FormSectionProps>) {
+export default function FormSection({ title, goNext, finale = false,label = null, nextButtonDTM, children }: PropsWithChildren<FormSectionProps>) {
   const { data } = useContext(ClientDataContext)
   let nextButtonElement = <input
-    className={styles.nextBtn + ' rounded-full uppercase text-white'}
+    data-dtm={nextButtonDTM}
+    className={styles.nextBtn + ' rounded-full uppercase text-white stat-button-link'}
     onClick={() => goNext()}
     type="button"
     value={data.LANGUAGE === 'en' ? (label ? label :'Next') : (label ? label : 'Suivant')}

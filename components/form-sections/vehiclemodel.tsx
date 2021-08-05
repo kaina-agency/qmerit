@@ -46,6 +46,7 @@ export default function VehicleModel() {
   return (
     <FormSection
       title={data.LANGUAGE =='en' ? 'Vehicle Model Year' : 'Année modèle du véhicule'}
+      nextButtonDTM="vehicle information"
       goNext={showNext ?  goNext : null}
     >
       <div className="flex flex-col space-y-1">
@@ -55,7 +56,7 @@ export default function VehicleModel() {
         <div>
           <br />
           <div className="relative mr-2 inline-block">
-            <input value="ev" type="radio" id="model-ev" className="std-radio"
+            <input value="ev" type="radio" id="model-ev" className="std-radio stat-radio" data-dtm="vehicle information"
               {...register(ClientDataKey.VEHICLE_MODEL,{required:true})}
               onChange={ e => setVehicleModel(e.target.value) }
               defaultChecked={vehicleModel == 'ev'}
@@ -66,7 +67,7 @@ export default function VehicleModel() {
           <br />
           <br />
           <div className="relative mr-2 inline-block">
-            <input value="euv" type="radio" id="model-euv"  className="std-radio"
+            <input value="euv" type="radio" id="model-euv"  className="std-radio stat-radio" data-dtm="vehicle information"
               {...register(ClientDataKey.VEHICLE_MODEL,{required:true})}
               onChange={ e => setVehicleModel(e.target.value) }
               defaultChecked={ vehicleModel == 'euv' }
@@ -78,7 +79,7 @@ export default function VehicleModel() {
           <br />
           <br />
           <div className="relative mr-2 inline-block">
-            <input value="other" type="radio" id="model-other"  className="std-radio"
+            <input value="other" type="radio" id="model-other"  className="std-radio stat-radio" data-dtm="vehicle information"
               {...register(ClientDataKey.VEHICLE_MODEL,{required:true})}
               onChange={ e => setVehicleModel(e.target.value) }
               defaultChecked={ (vehicleModel !== 'euv' && vehicleModel !== 'ev' && vehicleModel) ? true : false  }
@@ -90,7 +91,8 @@ export default function VehicleModel() {
             <label className="std-label">Vehicle Model*</label>
             <input
               type="text"
-              className="std-text-field input-full-4"
+              className="std-text-field input-full-4 stat-input-field"
+              data-dtm="vehicle information"
               onChange={ e => {
                 const val = e.target.value === '' ? 'other' : e.target.value
                 setVehicleModel(val)
@@ -110,7 +112,7 @@ export default function VehicleModel() {
           <div>
             <br />
             <div className="relative mr-2 inline-block">
-              <input value="accepts" type="radio" id="offer-accept" className="std-radio"
+              <input value="accepts" type="radio" id="offer-accept" className="std-radio stat-radio" data-dtm="vehicle information"
                 {...register(ClientDataKey.REJECTS_CHEVY_OFFER,{required:true})}
                 onChange={ () => setAcceptsOffer(true) }
                 defaultChecked={ data.REJECTS_CHEVY_OFFER === false }
@@ -121,7 +123,7 @@ export default function VehicleModel() {
             <br />
             <br />
             <div className="relative mr-2 inline-block">
-              <input value="rejects" type="radio" id="offer-reject"  className="std-radio"
+              <input value="rejects" type="radio" id="offer-reject"  className="std-radio stat-radio" data-dtm="vehicle information"
                 {...register(ClientDataKey.REJECTS_CHEVY_OFFER,{required:true})}
                 onChange={ () => {
                   setShowNext(true)

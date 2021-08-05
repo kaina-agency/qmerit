@@ -37,7 +37,8 @@ export default function RentOrOwn() {
               {...register(ClientDataKey.RENT_OR_OWN)}
               defaultValue={data.RENT_OR_OWN ? data.RENT_OR_OWN : ''}
               onChange={(e) => handleGoNext(e)}
-              className="std-select input-full-4"
+              className="std-select input-full-4 stat-dropdown"
+              data-dtm="household type"
             >
               <option value="" disabled hidden>{data.LANGUAGE === 'en' ? 'Choose here' : 'Choisissez...' }</option>
               <option value="rent">{data.LANGUAGE === 'en' ?' Rent':'Locataire'}</option>

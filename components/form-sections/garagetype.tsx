@@ -80,7 +80,8 @@ export default function GarageType() {
       </p>
 
       <div className="relative mr-2 inline-block">
-        <input value="true" type="radio" id="240v-true" className="std-radio"
+        <input value="true" type="radio" id="240v-true" className="std-radio stat-radio"
+          data-dtm="garage type"
           onChange={() => setIntendsInstall(true)}
           checked={intendsInstall === true}
           required
@@ -91,7 +92,8 @@ export default function GarageType() {
       <br />
       <br />
       <div className="relative mr-2 inline-block">
-        <input value="false" type="radio" id="240v-false" className="std-radio"
+        <input value="false" type="radio" id="240v-false" className="std-radio stat-radio"
+          data-dtm="garage type"
           onChange={() => setIntendsInstall(false)}
           checked={intendsInstall === false}
           required
@@ -104,7 +106,8 @@ export default function GarageType() {
 
   const creditQuestion = !showCreditQuestion ? null : <div>
     <div className="relative mr-2 inline-block">
-      <input value="true" type="radio" id="credit-true" className="std-radio"
+      <input value="true" type="radio" id="credit-true" className="std-radio stat-radio"
+        data-dtm="garage type"
         onChange={() => {
           setAccepts1kCredit(true)
           setCreditErrorMsg('')
@@ -118,7 +121,8 @@ export default function GarageType() {
     <br />
     <br />
     <div className="relative mr-2 inline-block">
-      <input  value="false" type="radio"  id="credit-false" className="std-radio"
+      <input  value="false" type="radio"  id="credit-false" className="std-radio stat-radio"
+        data-dtm="garage type"
         onChange={() => {
           setCreditErrorMsg(
             data.LANGUAGE === 'en' ? 'Talk to your authorized Chevrolet Bolt Dealer about Chevrolet’s Flo Public Charging Credit!'
@@ -141,6 +145,7 @@ export default function GarageType() {
   return (
     <FormSection
       title={data.LANGUAGE === 'en' ? 'Garage Type' : 'Type de garage' }
+      nextButtonDTM="garage type"
       goNext={ (garageType == 'attached' || intendsInstall) || (accepts1kCredit) ? handleNext : null}
       //goNext={  accepts1kCredit ? handleNext : null}
     >
@@ -155,7 +160,8 @@ export default function GarageType() {
             </label>
             <br />
             <div className="relative mr-2 inline-block">
-              <input value="attached" type="radio" id="attached-radio"  className="std-radio"
+              <input value="attached" type="radio" id="attached-radio"  className="std-radio stat-radio"
+                data-dtm="garage type"
                 onChange={() => setGarageType('attached')}
                 checked={garageType === 'attached'}
                 required
@@ -171,7 +177,8 @@ export default function GarageType() {
             </label>
             <br />
             <div className="relative mr-2 inline-block">
-              <input value="detached" type="radio" id="detached-radio" className="std-radio"
+              <input value="detached" type="radio" id="detached-radio" className="std-radio stat-radio"
+                data-dtm="garage type"
                 onChange={() => setGarageType('detached')}
                 checked={garageType === 'detached'}
                 required

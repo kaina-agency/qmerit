@@ -30,6 +30,7 @@ export default function WelcomeSection({ goNext, path }: WelcomeSectionProps) {
   return (
     <FormSection
       title={data.LANGUAGE == 'en' ? 'Welcome': 'Bienvenue'}
+      nextButtonDTM="welcome:installation request"
       goNext={goNext}
     >
       <div className="flex flex-col space-y-1">

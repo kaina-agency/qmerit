@@ -77,7 +77,8 @@ export default function PanelImages() {
         {data.LANGUAGE === 'en' ? 'Add Image' : 'AJOUTER IMAGE'}
       </label>
       <input
-        className="opacity-0"
+        className="opacity-0 stat-button-link"
+        data-dtm="upload:electrical panel"
         type="file"
         name="picture"
         accept="image/*"
@@ -98,6 +99,7 @@ export default function PanelImages() {
   return (
     <FormSection
       title={data.LANGUAGE === 'en' ? 'Upload Images – Electrical Panel' : 'Téléverser des images – panneau électrique'}
+      nextButtonDTM="upload:electrical panel"
       goNext={ showNext ?  handleNext: null }
     >
       <div>
@@ -111,7 +113,8 @@ export default function PanelImages() {
         >
           {data.LANGUAGE === 'en' ? 'Add Image' : 'AJOUTER IMAGE'}
         </label>
-        <input  className="opacity-0"
+        <input  className="opacity-0 stat-button-link"
+          data-dtm="upload:detailed electrical panel"
           type="file"
           name="picture"
           accept="image/*"

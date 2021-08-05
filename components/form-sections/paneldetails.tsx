@@ -36,6 +36,7 @@ export default function PanelDetails() {
   return (
     <FormSection
       title={data.LANGUAGE ==='en' ? 'Electrical Panel Details' : 'Détails du panneau électrique'}
+      nextButtonDTM="eletrical panel info"
       goNext={ showNext ? handleNext : null }
     >
       <div>
@@ -48,7 +49,8 @@ export default function PanelDetails() {
               {...register(ClientDataKey.PANEL_COUNT)}
               defaultValue={data.PANEL_COUNT ? data.PANEL_COUNT : ''}
               onChange={(e) => setPanelCount(e.target.value)}
-              className="std-select input-full-4"
+              className="std-select input-full-4 stat-dropdown"
+              data-dtm="eletrical panel info"
             >
               <option value="" disabled hidden>{data.LANGUAGE === 'en' ? 'Choose one...': 'Choisissez...' }</option>
               <option value="one">{data.LANGUAGE ==='en' ? 'One' :'Un'}</option>
@@ -68,7 +70,8 @@ export default function PanelDetails() {
               {...register(ClientDataKey.PANEL_LOCATION_ALT)}
               defaultValue={data.PANEL_LOCATION_ALT ? data.PANEL_LOCATION_ALT : ''}
               onChange={(e) => setPanelLocation(e.target.value)}
-              className="std-select input-full-4"
+              className="std-select input-full-4 stat-dropdown"
+              data-dtm="eletrical panel info"
             >
               <option value="" disabled hidden>{data.LANGUAGE === 'en' ? 'Choose one...': 'Choisissez...' }</option>
               <option value="garage">{data.LANGUAGE ==='en' ? 'Inside my garage':'Dans mon garage'}</option>
@@ -84,7 +87,8 @@ export default function PanelDetails() {
             <label className="std-label">{data.LANGUAGE === 'en' ? 'Electrical Panel Location*' : 'Location panneau principal'}</label>
             <input
               type="text"
-              className="std-text-field input-full-4"
+              className="std-text-field input-full-4 stat-input-field"
+              data-dtm="eletrical panel info"
               onChange={(e) => setCustomPanelLocation(e.target.value)}
               required
             />

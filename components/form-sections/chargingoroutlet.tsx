@@ -26,6 +26,7 @@ export default function ChargingUnitOrOutlet() {
   return (
     <FormSection
       title={data.LANGUAGE === 'en' ? 'Charging Unit or Outlet' :'Unité ou prise de charge'}
+      nextButtonDTM="charging unit info"
       goNext={ chargeType ? handleNext :null}
     >
       <div>
@@ -41,7 +42,8 @@ export default function ChargingUnitOrOutlet() {
               {...register(ClientDataKey.CHARGE_TYPE)}
               defaultValue={data.CHARGE_TYPE ? data.CHARGE_TYPE : ''}
               onChange={(e) => handleChargeTypeChange(e)}
-              className="std-select input-full-4"
+              className="std-select input-full-4 stat-dropdown"
+              data-dtm="charging unit info"
             >
               <option value="" disabled hidden>{data.LANGUAGE === 'en' ? 'Choose one...': 'Choisissez...' }</option>
               <option value="outlet">{data.LANGUAGE === 'en' ? 'Charging Outlet':'Prise de charge'}</option>

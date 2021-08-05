@@ -54,6 +54,7 @@ export default function BreakerSize({forceNext, onComplete}: BreakerSizeProps) {
   return (
     <FormSection
       title={data.LANGUAGE === 'en' ? 'Additional Details' :'Détails supplémentaires'}
+      nextButtonDTM="additional details"
       goNext={ showNext ? handleGoNext : null}
       label={data.LANGUAGE ==='en' ? 'Submit' : 'Soumettre'}
     >
@@ -67,7 +68,8 @@ export default function BreakerSize({forceNext, onComplete}: BreakerSizeProps) {
             <select
               {...register(ClientDataKey.BREAKER_SIZE)}
               onChange={(e) => setBreakerSize(e.target.value)}
-              className="std-select input-full-4"
+              className="std-select input-full-4 stat-dropdown"
+              data-dtm="additional details"
             >
               <option value="" disabled hidden>{data.LANGUAGE === 'en' ? 'Choose here':'Choisissez...'}</option>
               <option value="60">{data.LANGUAGE === 'en' ? '60 amps':'60 A '}</option>
@@ -84,7 +86,8 @@ export default function BreakerSize({forceNext, onComplete}: BreakerSizeProps) {
             <label className="std-label">{data.LANGUAGE === 'en' ? 'Breaker Size' : 'Taille de disjoncteur'}*</label>
             <input
               type="text"
-              className="std-text-field input-full-4"
+              className="std-text-field input-full-4 stat-input-field"
+              data-dtm="additional details"
               onChange={(e) => setCustomBreakerSize(e.target.value)}
               required
             />
@@ -96,7 +99,8 @@ export default function BreakerSize({forceNext, onComplete}: BreakerSizeProps) {
         </p>
         <textarea
           style={{ minWidth: '400px' }}
-          className="border-grey-mid border resize"
+          className="border-grey-mid border resize stat-input-field"
+          data-dtm="additional details"
           {...register(ClientDataKey.ADDITIONAL_INFO_FOR_INSTALL, { maxLength: 500 })}
           defaultValue={data.ADDITIONAL_INFO_FOR_INSTALL ? data.ADDITIONAL_INFO_FOR_INSTALL : ''}
           onChange={(e) => setAdditionalInfo(e.target.value)}

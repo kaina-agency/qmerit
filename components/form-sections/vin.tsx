@@ -72,6 +72,7 @@ export default function VINSection() {
   return (
     <FormSection
       title={data.LANGUAGE ==='en' ? 'VIN' : 'NIV'}
+      nextButtonDTM="vin"
       goNext={ vinSubmitted? null: handleGoNext}
     >
       <p className="text-2xl mb-7">
@@ -85,7 +86,8 @@ export default function VINSection() {
           <label className="std-label">{data.LANGUAGE ==='en' ? 'VIN' : 'NIV'}*</label>
           <input
             type="text"
-            className="std-text-field input-full-4"
+            className="std-text-field input-full-4 stat-input-field"
+            data-dtm="vin"
             defaultValue={data[ClientDataKey.VIN]}
             {...register(ClientDataKey.VIN, {
               minLength: 17,

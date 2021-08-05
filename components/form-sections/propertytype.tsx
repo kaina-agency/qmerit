@@ -83,7 +83,7 @@ export default function PropertyType() {
 
   const meterQuestion = showMeterQuestion ?
     <div><p className="text-2xl my-7">{data.LANGUAGE ==='en' ? 'Do you have a dedicated meter?': 'Avez-vous un compteur dédié?'}</p>
-      <p className="text-grey mini-button" onClick={() => setShowDetails(!showDetails)}>{data.LANGUAGE ==='en' ? 'What’s this?' : 'De quoi s’agit-il?'}
+      <p className="text-grey mini-button stat-button-link" data-dtm="property details" onClick={() => setShowDetails(!showDetails)}>{data.LANGUAGE ==='en' ? 'What’s this?' : 'De quoi s’agit-il?'}
         <span className={showDetails ? ' ': 'hidden'}>
           <br/>
           <br/>
@@ -102,7 +102,8 @@ export default function PropertyType() {
           type="radio"
           id="dedicated-meter-true"
           name="dedicated-meter"
-          className="std-radio"
+          className="std-radio stat-radio"
+          data-dtm="property details"
           {...register(ClientDataKey.HAS_METER, { required: true })}
           onChange={() => { setHasMeter(true)  }}
           defaultChecked={hasMeter === true}
@@ -118,7 +119,8 @@ export default function PropertyType() {
           type="radio"
           id="dedicated-meter-false"
           name="dedicated-meter"
-          className="std-radio"
+          className="std-radio stat-radio"
+          data-dtm="property details"
           {...register(ClientDataKey.HAS_METER, { required: true })}
           onChange={() => { setHasMeter(false); setValue(ClientDataKey.HAS_METER,false)  }}
           defaultChecked={hasMeter === false}
@@ -133,6 +135,7 @@ export default function PropertyType() {
   return (
     <FormSection
       title={data.LANGUAGE === 'en' ? 'Property Detail': 'Détails de la propriété'}
+      nextButtonDTM="property details"
       goNext={ showNext ? handleGoNext : null}
     >
       <div>
@@ -145,7 +148,8 @@ export default function PropertyType() {
               {...register(ClientDataKey.PROPERTY_TYPE)}
               defaultValue={data.PROPERTY_TYPE ? data.PROPERTY_TYPE : ''}
               onChange={(e) => handlePropChange(e) }
-              className="std-select input-full-4"
+              className="std-select input-full-4 stat-dropdown"
+              data-dtm="property details"
             >
               <option value="" disabled hidden>{data.LANGUAGE === 'en' ? 'Choose here':'Choisissez...'}</option>
               <option value="house">{data.LANGUAGE === 'en' ? 'House' : 'Maison'}</option>

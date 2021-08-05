@@ -42,7 +42,7 @@ export default function UnitType() {
     <div className="mt-4 std-input-container">
       <div className="sm:w-6/12 w-full" aria-invalid={errors[ClientDataKey.BRAND_NAME]  ? 'true' : 'false'}>
         <label className="std-label">{data.LANGUAGE ==='en' ? 'Insert brand and model here':'Insérer la marque et le modèle ici'}*</label>
-        <input type="text" className="std-text-field input-full-4" defaultValue={data.BRAND_NAME}
+        <input type="text" className="std-text-field input-full-4 stat-input-field" data-dtm="charging unit info" defaultValue={data.BRAND_NAME}
           { ...register(ClientDataKey.BRAND_NAME, { required: true, maxLength: 80 }) }
         />
         <span>
@@ -54,6 +54,7 @@ export default function UnitType() {
   return (
     <FormSection
       title={data.LANGUAGE ==='en' ? 'Charging Unit' :'Unité de charge'}
+      nextButtonDTM="charging unit info"
       goNext={showNext ? handleGoNext:null}
     >
       <div>
@@ -63,7 +64,8 @@ export default function UnitType() {
         </p>
         <div>
           <div className="relative mr-2 inline-block">
-            <input value="True" type="radio" id="purchased-charger-true" className="std-radio"
+            <input value="True" type="radio" id="purchased-charger-true" className="std-radio stat-radio"
+              data-dtm="charging unit info"
               {...register(ClientDataKey.OWNS_UNIT,{required:true})}
               onChange={(e) => handleOwnershipChange(e)}
               defaultChecked={data.NEED_PURCHASING_HELP === false}
@@ -74,7 +76,8 @@ export default function UnitType() {
           <br />
           <br />
           <div className="relative mr-2 inline-block">
-            <input value="False" type="radio" id="purchased-charger-false" className="std-radio"
+            <input value="False" type="radio" id="purchased-charger-false" className="std-radio stat-radio"
+              data-dtm="charging unit info"
               {...register(ClientDataKey.OWNS_UNIT,{required:true})}
               onChange={(e) => handleOwnershipChange(e)}
               defaultChecked={data.NEED_PURCHASING_HELP === true}

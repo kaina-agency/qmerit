@@ -56,6 +56,7 @@ export default function HomeownerApproval() {
   return (
     <FormSection
       title={data.LANGUAGE ==='en' ? 'Owner Approval' : 'Approbation'}
+      nextButtonDTM="owner approval"
       goNext={ hasApproval && !data.OWNER_APPROVAL ? handleGoNext:null}
     >
       <div>
@@ -69,7 +70,8 @@ export default function HomeownerApproval() {
               value="True"
               type="radio"
               id="approval-true"
-              className="std-radio"
+              className="std-radio stat-radio"
+              data-dtm="owner approval"
               {...register(ClientDataKey.OWNER_APPROVAL,{required:true})}
               onChange={ () => handleApprovalChange(true)}
               defaultChecked={data.OWNER_APPROVAL === true}
@@ -87,7 +89,8 @@ export default function HomeownerApproval() {
               value="False"
               type="radio"
               id="approval-false"
-              className="std-radio"
+              className="std-radio stat-radio"
+              data-dtm="owner approval"
               {...register(ClientDataKey.OWNER_APPROVAL,{required:true})}
               onChange={ () => { setValue(ClientDataKey.OWNER_APPROVAL, false); handleApprovalChange(false)  } }
               defaultChecked={data.OWNER_APPROVAL === false}

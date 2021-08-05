@@ -41,6 +41,7 @@ export default function PanelLocation() {
   return (
     <FormSection
       title={data.LANGUAGE === 'en' ? 'Electrical Panel Location' :'Emplacement du panneau électrique'}
+      nextButtonDTM="location"
       goNext={ (chargingCapability && garageSize && panelLocation ) ? handleNext: null }
     >
       <div>
@@ -54,7 +55,8 @@ export default function PanelLocation() {
             <select
               {...register(ClientDataKey.PANEL_LOCATION)}
               onChange={(e) => setPanelLocation(e.target.value)}
-              className="std-select input-full-4"
+              className="std-select input-full-4 stat-dropdown"
+              data-dtm="electrical panel location"
             >
               <option value="" disabled hidden>{data.LANGUAGE === 'en' ? 'Choose one...': 'Choisissez...' }</option>
               <option value="garage">Garage</option>
@@ -73,7 +75,8 @@ export default function PanelLocation() {
             <select
               {...register(ClientDataKey.CHARGING_CAPABILITY)}
               onChange={(e) => setChargingCapability(e.target.value)}
-              className="std-select input-full-4"
+              className="std-select input-full-4 stat-dropdown"
+              data-dtm="electrical panel location"
             >
               <option value="" disabled hidden>{data.LANGUAGE === 'en' ? 'Choose one...' : 'Choisissez...'}</option>
               <option value="same">{data.LANGUAGE ==='en' ? 'Same' : 'Le même mur'}</option>
@@ -92,7 +95,8 @@ export default function PanelLocation() {
               <select
                 {...register(ClientDataKey.GARAGE_SIZE)}
                 onChange={(e) => setGarageSize(e.target.value)}
-                className="std-select input-full-4"
+                className="std-select input-full-4 stat-dropdown"
+                data-dtm="electrical panel location"
               >
                 <option value="" disabled hidden>{data.LANGUAGE === 'en' ? 'Choose one...' : 'Choisissez...'}</option>
                 <option value="1">1 {data.LANGUAGE ==='en' ? 'Car' :'voiture'}</option>

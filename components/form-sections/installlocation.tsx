@@ -44,6 +44,7 @@ export default function InstallLocation() {
   return (
     <FormSection
       title={data.LANGUAGE === 'en' ? 'Upload Image – Charging Outlet Installation Location'  : 'Téléverser l’image – emplacement de l’installation de la prise recharge'}
+      nextButtonDTM="location"
       goNext={imageSelected ? handleNext:null}
     >
       <div>
@@ -58,7 +59,8 @@ export default function InstallLocation() {
           {data.LANGUAGE === 'en' ? 'Add Image' :'AJOUTER IMAGE'}
         </label>
         <input
-          className="opacity-0"
+          className="opacity-0 stat-button-link"
+          data-dtm="upload:outlet location"
           type="file"
           name="picture"
           accept="image/*"

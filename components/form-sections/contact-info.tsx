@@ -94,12 +94,13 @@ export default function ContactInfoSection() {
   }, [errors])
 
   const privacyStatement = data.LANGUAGE ==='en' ?
-    <>By clicking Next, the information you provide or upload into this EV Install Form, including your name, address, phone number, email address, and photos will be shared with Qmerit. Qmerit will use this information to facilitate the match to a qualified electrician in your area who for purposes of installing a 240-volt charging outlet at your home. All information shared with Qmerit and Qmerit’s services will be subject to the <a href="https://qmerit.com/terms-of-use"  target="_blank" rel="noreferrer"><u>Qmerit Terms of Service</u></a> and the <a href="https://qmerit.com/privacy-policy" target="_blank" rel="noreferrer"><u>Qmerit Privacy Statement.</u></a></>
-    :<>En cliquant sur suivant, les renseignements que vous fournissez ou téléversez dans le formulaire d’installation pour VE y compris votre nom, adresse, numéro de téléphone, courriel et photo seront partagés avec Qmerit. Qmerit utilisera ces renseignements pour faciliter la recherche d’un électricien qualifié dans votre région qui pourra installer une prise de recharge de 240 volt. Toutes les informations partagées avec Qmerit et les services Qmerit sont sujettes <a href="https://qmerit.com/terms-of-use#french"  target="_blank" rel="noreferrer"><u>aux modalités</u></a> et à <a href="https://qmerit.com/privacy-policy/#french" target="_blank" rel="noreferrer"><u>l’énoncé de confidentialité de Qmerit.</u> </a></>
+    <>By clicking Next, the information you provide or upload into this EV Install Form, including your name, address, phone number, email address, and photos will be shared with Qmerit. Qmerit will use this information to facilitate the match to a qualified electrician in your area who for purposes of installing a 240-volt charging outlet at your home. All information shared with Qmerit and Qmerit’s services will be subject to the <a href="https://qmerit.com/terms-of-use"  target="_blank" rel="noreferrer" className="stat-text-link" data-dtm="contact info:terms"><u>Qmerit Terms of Service</u></a> and the <a href="https://qmerit.com/privacy-policy" target="_blank" rel="noreferrer" className="stat-text-link" data-dtm="contact info:terms"><u>Qmerit Privacy Statement.</u></a></>
+    :<>En cliquant sur suivant, les renseignements que vous fournissez ou téléversez dans le formulaire d’installation pour VE y compris votre nom, adresse, numéro de téléphone, courriel et photo seront partagés avec Qmerit. Qmerit utilisera ces renseignements pour faciliter la recherche d’un électricien qualifié dans votre région qui pourra installer une prise de recharge de 240 volt. Toutes les informations partagées avec Qmerit et les services Qmerit sont sujettes <a href="https://qmerit.com/terms-of-use#french"  target="_blank" rel="noreferrer" className="stat-text-link" data-dtm="contact info:terms"><u>aux modalités</u></a> et à <a href="https://qmerit.com/privacy-policy/#french" target="_blank" rel="noreferrer" className="stat-text-link" data-dtm="contact info:terms"><u>l’énoncé de confidentialité de Qmerit.</u> </a></>
 
   return (
     <FormSection
       title={data.LANGUAGE ==='en' ? 'Contact Information' : 'Coordonnées'}
+      nextButtonDTM="contact info"
       goNext={ contactComplete ? null : handleNext}
     >
       <div className="flex flex-col space-y-1">
@@ -115,7 +116,8 @@ export default function ContactInfoSection() {
           <label className="std-label">{data.LANGUAGE ==='en' ? 'First Name':'Prénom'}*</label>
           <input
             type="text"
-            className="std-text-field input-full-4"
+            className="std-text-field input-full-4 stat-input-field"
+            data-dtm="contact info"
             defaultValue={data.FIRST_NAME}
             {...register(ClientDataKey.FIRST_NAME, {
               required: true,
@@ -130,7 +132,8 @@ export default function ContactInfoSection() {
           <label className="std-label">{data.LANGUAGE ==='en' ? 'Last Name':'Nom de famille'}*</label>
           <input
             type="text"
-            className="std-text-field input-full-4"
+            className="std-text-field input-full-4 stat-input-field"
+            data-dtm="contact info"
             defaultValue={data.LAST_NAME}
             {...register(ClientDataKey.LAST_NAME, {
               required: true,
@@ -145,7 +148,8 @@ export default function ContactInfoSection() {
           <label className="std-label">{data.LANGUAGE ==='en' ? 'E-mail Address': 'Adresse électronique'}*</label>
           <input
             type="email"
-            className="std-text-field input-full-4"
+            className="std-text-field input-full-4 stat-input-field"
+            data-dtm="contact info"
             defaultValue={data.EMAIL}
             {...register(ClientDataKey.EMAIL, {
               required: true,
@@ -160,8 +164,8 @@ export default function ContactInfoSection() {
           <label className="std-label">{data.LANGUAGE ==='en' ? 'Phone Number':'Numéro de téléphone'}*</label>
           <input
             type="text"
-            className="std-text-field input-full-4"
-
+            className="std-text-field input-full-4 stat-input-field"
+            data-dtm="contact info"
             defaultValue={data.PHONE}
             {...register(ClientDataKey.PHONE, {
               required: true,
@@ -176,7 +180,8 @@ export default function ContactInfoSection() {
           <label className="std-label">{data.LANGUAGE === 'en' ? 'Address 1':'Ligne d’adresse 1'}*</label>
           <input
             type="text"
-            className="std-text-field input-full-4"
+            className="std-text-field input-full-4 stat-input-field"
+            data-dtm="contact info"
             defaultValue={data.ADDRESS}
             {...register(ClientDataKey.ADDRESS, {
               required: true,
@@ -191,7 +196,8 @@ export default function ContactInfoSection() {
           <label className="std-label">{data.LANGUAGE === 'en' ? 'Address 2':'Ligne d’adresse 2'}</label>
           <input
             type="text"
-            className="std-text-field input-full-4"
+            className="std-text-field input-full-4 stat-input-field"
+            data-dtm="contact info"
             defaultValue={data.ADDRESS2}
             {...register(ClientDataKey.ADDRESS2, {
               required: false,
@@ -203,7 +209,8 @@ export default function ContactInfoSection() {
           <label className="std-label">{data.LANGUAGE ==='en' ? 'City':'Ville'}*</label>
           <input
             type="text"
-            className="std-text-field input-full-4"
+            className="std-text-field input-full-4 stat-input-field"
+            data-dtm="contact info"
             defaultValue={data.CITY}
             {...register(ClientDataKey.CITY, {
               required: true,
@@ -218,7 +225,8 @@ export default function ContactInfoSection() {
           <label className="std-label">Province*</label>
           <input
             type="text"
-            className="std-text-field input-full-4"
+            className="std-text-field input-full-4 stat-input-field"
+            data-dtm="contact info"
             defaultValue={data.PROVINCE}
             {...register(ClientDataKey.PROVINCE, {
               required: true,
@@ -233,7 +241,8 @@ export default function ContactInfoSection() {
           <label className="std-label">{data.LANGUAGE ==='en' ? 'Postal Code' : 'Code postal'}*</label>
           <input
             type="text"
-            className="std-text-field input-full-4"
+            className="std-text-field input-full-4 stat-input-field"
+            data-dtm="contact info"
             defaultValue={data.POSTAL_CODE}
             {...register(ClientDataKey.POSTAL_CODE, {
               required: true,
@@ -255,7 +264,8 @@ export default function ContactInfoSection() {
             value="primary"
             type="radio"
             id="residence-primary"
-            className="std-radio"
+            className="std-radio stat-radio"
+            data-dtm="contact info"
             {...register(ClientDataKey.RESIDENCE_TYPE,{required:true})}
             onChange={ e => {
               setValue(ClientDataKey.RESIDENCE_TYPE,e.target.value)
@@ -273,7 +283,8 @@ export default function ContactInfoSection() {
             value="secondary"
             type="radio"
             id="residence-secondary"
-            className="std-radio"
+            className="std-radio stat-radio"
+            data-dtm="contact info"
             {...register(ClientDataKey.RESIDENCE_TYPE,{required:true})}
             onChange={ e => {
               setValue(ClientDataKey.RESIDENCE_TYPE,e.target.value)
