@@ -13,6 +13,7 @@ export default function Confirmation({ path }: { path: 'path1' | 'path2'}) {
   const { data } = useContext(ClientDataContext)
 
   if (typeof window === 'object') {
+    const _satellite = window['_satellite']
     if (_satellite) _satellite.track('thank-you')
   }
 

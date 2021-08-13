@@ -44,6 +44,7 @@ function analytics() {
 
 				if (digitalData.siteSectionsLevel1 !== currentSectionTitle) {
 					digitalData.siteSectionsLevel1 = currentSectionTitle
+					const _satellite = window['_satellite']
 					if (_satellite) _satellite.track('next-steps')
 				}
 			})
