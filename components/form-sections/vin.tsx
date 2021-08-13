@@ -87,6 +87,10 @@ export default function VINSection() {
           <input
             type="text"
             className="std-text-field input-full-4 stat-input-field"
+            onKeyUp={e => {
+              ((e.target as HTMLInputElement)).value
+                = (e.target as HTMLInputElement).value.toUpperCase()
+            }}
             data-dtm="vin"
             defaultValue={data[ClientDataKey.VIN]}
             {...register(ClientDataKey.VIN, {
