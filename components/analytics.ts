@@ -12,24 +12,22 @@ function analytics() {
 			if (window.innerWidth >= 960) bp = 'xlarge'
 			if (window.innerWidth >= 1500) bp = 'xxlarge'
 
-			var digitalData = window['digitalData'] || {
-				pageInfo: {},
-			}
-
-			digitalData.pageInfo = {
-				siteSectionsLevel1: 'welcome',
-				url: window.location.href,
-				seoStrategyPageName: document.title,
-				pageType: 'form',
-				languageSelected: lang,
-				siteName: document.title,
-				brand: 'chevrolet',
-				country: 'canada',
-				region: 'north america',
-				renderedExperience: bp,
-				viewport: `${window.innerWidth}x${window.innerHeight}`,
-				orientation: orientation,
-				formName: 'installation request',
+			window['digitalData'] = {
+				pageInfo: {
+					siteSectionsLevel1: 'welcome',
+					url: window.location.href,
+					seoStrategyPageName: document.title,
+					pageType: 'form',
+					languageSelected: lang,
+					siteName: document.title,
+					brand: 'chevrolet',
+					country: 'canada',
+					region: 'north america',
+					renderedExperience: bp,
+					viewport: `${window.innerWidth}x${window.innerHeight}`,
+					orientation: orientation,
+					formName: 'installation request',
+				},
 			}
 
 			const observer = new MutationObserver((mutationsList) => {
@@ -42,8 +40,8 @@ function analytics() {
 					['innerText'].toLowerCase()
 					.replace(/ /g, '-')
 
-				if (digitalData.siteSectionsLevel1 !== currentSectionTitle) {
-					digitalData.siteSectionsLevel1 = currentSectionTitle
+				if (window['digitalData'].siteSectionsLevel1 !== currentSectionTitle) {
+					window['digitalData'].siteSectionsLevel1 = currentSectionTitle
 					const _satellite = window['_satellite']
 					if (_satellite) _satellite.track('next-steps')
 				}
