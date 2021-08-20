@@ -1,6 +1,5 @@
 function analytics() {
 	if (typeof window === 'object') {
-		// blah
 		window.addEventListener('load', () => {
 			const form = document.querySelector('form')
 			const orientation =
