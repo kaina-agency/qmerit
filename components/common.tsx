@@ -112,7 +112,7 @@ export default function Common({ path }: { path: 'path1' | 'path2' }) {
         </div>
       </header>
 
-      <div className="bg-grey-line" style={{width: "100%"}}>
+      <div className="bg-grey-line" style={{width: "100%", position: "sticky", top: 0}}>
         <div className="container max-w-screen-md mx-auto py-4 pr-6 flex justify-end">
           <button onClick={reset} className="bg-white hover:text-error text-blue text-sm px-4 py-1 br-8 rounded-full">{isEnglish ? 'Clear All Fields' : 'Effacer Tous les Champs'}</button>
         </div>
