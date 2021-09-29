@@ -7,6 +7,7 @@ export const TermsContext: FormSectionContext = {
   component: Terms,
   key: 'terms',
   mutates: [
+    ClientDataKey.AUTH_NBR,
     ClientDataKey.TERMS,
     ClientDataKey.INFORMATION_ACKNOWLEDGEMENT
   ]
@@ -23,9 +24,11 @@ export default function Terms({path}: TermsProps) {
   const { data, setValue, setData } = useContext(ClientDataContext)
   const [ acceptsTerms, setAcceptsTerms ] = useState(data.TERMS ?? false)
   const [ infoAcknowledgement, setInfoAcknowledgement ] = useState(data.TERMS ?? false)
+  const authnbr = new URLSearchParams(document.location.search.substring(1)).get('authnbr');
 
   const handleGoNext = async () => {
     setData({
+      AUTH_NBR: authnbr,
       TERMS: true,
       INFORMATION_ACKNOWLEDGEMENT:true
     })

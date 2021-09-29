@@ -5,6 +5,7 @@ const CLIENT_DATA = 'CLIENT_DATA_V22'
 export const ClientDataContext = createContext<ReturnType<typeof useClientData>>(null)
 
 export enum ClientDataKey {
+  AUTH_NBR = 'AUTH_NBR',
   TERMS = 'TERMS',
   INFORMATION_ACKNOWLEDGEMENT = 'INFORMATION_ACKNOWLEDGEMENT',
   VIN = 'VIN',
@@ -46,6 +47,7 @@ export enum ClientDataKey {
 }
 
 export type ClientData = Partial<{
+  [ClientDataKey.AUTH_NBR]: string,
   [ClientDataKey.TERMS]: boolean,
   [ClientDataKey.INFORMATION_ACKNOWLEDGEMENT]: boolean,
   [ClientDataKey.VIN]: string,
