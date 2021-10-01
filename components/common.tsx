@@ -76,12 +76,13 @@ export default function Common({ path }: { path: 'path1' | 'path2' }) {
 						rel="noreferrer"
 					>
 						<img
-							className="absolute left-5 top-1/2 transform -translate-y-1/2"
+							className="absolute left-5 top-1/2 transform -translate-y-1/2 stat-logo"
 							srcSet="./EVLogo/EVLogo.png,
                       ./EVLogo/EVLogo@2x.png 2x,
                       ./EVLogo/EVLogo@3x.png 3x"
 							src="./EVLogo/EVLogo@3x.png"
 							alt="Chevrolet EV Logo"
+							data-dtm="global nav"
 						/>
 					</a>
 					<a
