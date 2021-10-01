@@ -1,7 +1,8 @@
 import FormSection from '../form-section'
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { ClientDataContext } from '../../hooks/client-data'
 import { FormSectionContext } from '../form-section-context'
+import { setAnalytics, satelliteTrack } from '../analytics'
 
 export const ConfirmationContext: FormSectionContext = {
   component: Confirmation,
@@ -10,12 +11,12 @@ export const ConfirmationContext: FormSectionContext = {
 }
 
 export default function Confirmation({ path }: { path: 'path1' | 'path2'}) {
+  useEffect(() => {
+    setAnalytics('thank-you')
+    satelliteTrack('thank-you')
+  })
+  
   const { data } = useContext(ClientDataContext)
-
-  if (typeof window === 'object') {
-    const _satellite = window['_satellite']
-    if (_satellite) _satellite.track('thank-you')
-  }
 
   const confirmationMessage = (path === 'path1' || (path === 'path2' && data.VEHICLE_MODEL && data.VEHICLE_MODEL === 'ev' || data.VEHICLE_MODEL === 'euv')) ?
     <div>

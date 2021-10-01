@@ -3,7 +3,7 @@ import { useFormContext } from 'react-hook-form'
 import { ClientDataKey, ClientDataContext } from '../../hooks/client-data'
 import FormSection from '../form-section'
 import { FormSectionContext } from '../form-section-context'
-import { setPageName } from '../analytics'
+import { setAnalytics } from '../analytics'
 
 export const PropertyTypeContext: FormSectionContext = {
   component: PropertyType,
@@ -15,7 +15,7 @@ export const PropertyTypeContext: FormSectionContext = {
 }
 
 export default function PropertyType() {
-  useEffect(() => {setPageName('property-details')}) // for adobe analytics
+  useEffect(() => {setAnalytics('property-detail')})
 
   const { register } = useFormContext()
   const { data, setData, setValue } = useContext(ClientDataContext)

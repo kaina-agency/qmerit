@@ -2,7 +2,7 @@ import { useContext, useState, useEffect } from 'react'
 import { ClientDataKey, ClientDataContext } from '../../hooks/client-data'
 import FormSection from '../form-section'
 import { FormSectionContext } from '../form-section-context'
-import { setPageName } from '../analytics'
+import { setAnalytics } from '../analytics'
 
 export const InstallLocationContext: FormSectionContext = {
   component: InstallLocation,
@@ -11,7 +11,7 @@ export const InstallLocationContext: FormSectionContext = {
 }
 
 export default function InstallLocation() {
-  useEffect(() => {setPageName('location')}) // for adobe analytics
+  useEffect(() => {setAnalytics('location')})
 
   const { data, setValue } = useContext(ClientDataContext)
   const [imageSelected, setImageSelected] = useState(false)

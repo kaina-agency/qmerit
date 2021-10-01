@@ -3,11 +3,11 @@ import {useFormContext} from 'react-hook-form'
 import { ClientDataKey, ClientDataContext } from '../../hooks/client-data'
 import FormSection from '../form-section'
 import { FormSectionContext } from '../form-section-context'
-import { setPageName } from '../analytics'
+import { setAnalytics } from '../analytics'
 
 export const VehicleModelContext: FormSectionContext = {
   component: VehicleModel,
-  key: 'vehicle-model',
+  key: 'vehicle-model-year',
   mutates: [
     ClientDataKey.VEHICLE_MODEL,
     ClientDataKey.REJECTS_CHEVY_OFFER
@@ -15,7 +15,7 @@ export const VehicleModelContext: FormSectionContext = {
 }
 
 export default function VehicleModel() {
-  useEffect(() => {setPageName('vehicle-information')}) // for adobe analytics
+  useEffect(() => {setAnalytics('vehicle-information')})
 
   const { register } = useFormContext()
   const { data, setData } = useContext(ClientDataContext)

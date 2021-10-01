@@ -3,7 +3,7 @@ import { useFormContext } from 'react-hook-form'
 import { ClientDataKey, ClientDataContext } from '../../hooks/client-data'
 import FormSection from '../form-section'
 import { FormSectionContext } from '../form-section-context'
-import { setPageName } from '../analytics'
+import { setAnalytics } from '../analytics'
 
 export const PanelDetailsContext: FormSectionContext = {
   component: PanelDetails,
@@ -15,7 +15,7 @@ export const PanelDetailsContext: FormSectionContext = {
 }
 
 export default function PanelDetails() {
-  useEffect(() => {setPageName('eletrical-panel-info')}) // for adobe analytics
+  useEffect(() => {setAnalytics('eletrical-panel-info')})
 
   const { register } = useFormContext()
   const { data, setData } = useContext(ClientDataContext)

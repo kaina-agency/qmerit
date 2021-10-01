@@ -3,7 +3,7 @@ import { useFormContext } from 'react-hook-form'
 import { ClientDataKey, ClientDataContext } from '../../hooks/client-data'
 import FormSection from '../form-section'
 import { FormSectionContext } from '../form-section-context'
-import { setPageName } from '../analytics'
+import { setAnalytics } from '../analytics'
 
 export const UnitTypeContext: FormSectionContext = {
   component: UnitType,
@@ -15,7 +15,7 @@ export const UnitTypeContext: FormSectionContext = {
 }
 
 export default function UnitType() {
-  useEffect(() => {setPageName('charging-unit-info')}) // for adobe analytics
+  useEffect(() => {setAnalytics('charging-unit-info')})
   
   const { register, trigger,formState: { errors} , getValues } = useFormContext()
   const { data, setData } = useContext(ClientDataContext)

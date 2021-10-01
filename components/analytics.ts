@@ -39,21 +39,31 @@ function analytics() {
 	}
 }
 
-export function setPageName(name) {
+export function setAnalytics(name) {
 	if (typeof window === 'object') {
 		const isFrench = window.location.host === 'www.offrerechargechevrolet.ca'
-		const pageName = () => {
-			window['digitalData'].pageInfo.pageName = 
-				`ch:NA:CA:${isFrench ? 'fr' : 'en'}:t1:index:${name}`
-				window['digitalData'].pageInfo.siteSectionsLevel2 = name
+
+		const setPageName = () => {
+			window['digitalData'].pageInfo.pageName = `ch:NA:CA:${
+				isFrench ? 'fr' : 'en'
+			}:t1:index:${name}`
+			window['digitalData'].pageInfo.siteSectionsLevel2 = name
 		}
+
 		if (window['digitalData']) {
-			pageName()
+			setPageName()
 		} else {
 			window.addEventListener('analytics-loaded', () => {
-				pageName()
+				setPageName()
 			})
 		}
+	}
+}
+
+export function satelliteTrack(event) {
+	console.log('next')
+	if (typeof window === 'object' && window['_satellite']) {
+		window['_satellite'].track(event)
 	}
 }
 

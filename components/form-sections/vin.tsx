@@ -3,7 +3,7 @@ import { useFormContext } from 'react-hook-form'
 import { ClientDataKey, ClientDataContext } from '../../hooks/client-data'
 import FormSection from '../form-section'
 import { FormSectionContext } from '../form-section-context'
-import { setPageName } from '../analytics'
+import { setAnalytics } from '../analytics'
 
 export const VINSectionContext: FormSectionContext = {
   component: VINSection,
@@ -12,7 +12,7 @@ export const VINSectionContext: FormSectionContext = {
 }
 
 export default function VINSection() {
-  useEffect(() => {setPageName('vin')}) // for adobe analytics
+  useEffect(() => {setAnalytics('vin')})
 
   const { register, formState: { errors }, trigger, getValues } = useFormContext()
   const { data, setValue } = useContext(ClientDataContext)

@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react'
 import { ClientDataKey, ClientDataContext } from '../../hooks/client-data'
 import FormSection from '../form-section'
 import { FormSectionContext } from '../form-section-context'
-import { setPageName } from '../analytics'
+import { setAnalytics } from '../analytics'
 
 export const GarageTypeContext: FormSectionContext = {
   component: GarageType,
@@ -15,7 +15,7 @@ export const GarageTypeContext: FormSectionContext = {
 }
 
 export default function GarageType() {
-  useEffect(() => {setPageName('garage-type')}) // for adobe analytics
+  useEffect(() => {setAnalytics('garage-type')})
 
   const { data, setData } = useContext(ClientDataContext)
   const [errorMsg, setErrorMessage ] = useState('')

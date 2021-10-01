@@ -3,7 +3,7 @@ import { useFormContext } from 'react-hook-form'
 import { ClientDataKey, ClientDataContext } from '../../hooks/client-data'
 import FormSection from '../form-section'
 import { FormSectionContext } from '../form-section-context'
-import { setPageName } from '../analytics'
+import { setAnalytics } from '../analytics'
 
 export const HomeownerApprovalContext: FormSectionContext = {
   component: HomeownerApproval,
@@ -12,7 +12,7 @@ export const HomeownerApprovalContext: FormSectionContext = {
 }
 
 export default function HomeownerApproval() {
-  useEffect(() => {setPageName('owner-approval')}) // for adobe analytics
+  useEffect(() => {setAnalytics('owner-approval')})
 
   const { register, trigger } = useFormContext()
   const { data, setValue } = useContext(ClientDataContext)

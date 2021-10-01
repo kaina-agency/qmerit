@@ -3,11 +3,11 @@ import { useFormContext } from 'react-hook-form'
 import { ClientDataKey, ClientDataContext } from '../../hooks/client-data'
 import FormSection from '../form-section'
 import { FormSectionContext } from '../form-section-context'
-import { setPageName } from '../analytics'
+import { setAnalytics, satelliteTrack } from '../analytics'
 
 export const ContactInfoSectionContext: FormSectionContext = {
   component: ContactInfoSection,
-  key: 'contact-info',
+  key: 'contact-information',
   mutates: [
     ClientDataKey.FIRST_NAME,
     ClientDataKey.LAST_NAME,
@@ -23,7 +23,7 @@ export const ContactInfoSectionContext: FormSectionContext = {
 }
 
 export default function ContactInfoSection() {
-  useEffect(() => {setPageName('contact-info')}) // for adobe analytics
+  useEffect(() => {setAnalytics('contact-info')})
 
   const { register, formState: { errors }, trigger, getValues } = useFormContext()
   const { data, setData, setValue } = useContext(ClientDataContext)
@@ -49,6 +49,7 @@ export default function ContactInfoSection() {
     if (isValid) {
       setData(getValues())
       setContactComplete(true)
+      satelliteTrack('next-steps')
     } else {
       setShowErrors(true)
     }

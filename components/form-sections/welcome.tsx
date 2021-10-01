@@ -2,7 +2,7 @@ import { useContext, useEffect } from 'react'
 import {ClientDataContext} from '../../hooks/client-data'
 import FormSection from '../form-section'
 import { FormSectionContext } from '../form-section-context'
-import { setPageName } from '../analytics'
+import { setAnalytics } from '../analytics'
 
 export const WelcomeSectionContext: FormSectionContext = {
   component: WelcomeSection,
@@ -16,7 +16,7 @@ interface WelcomeSectionProps {
 }
 
 export default function WelcomeSection({ goNext, path }: WelcomeSectionProps) {
-  useEffect(() => {setPageName('welcome')}) // for adobe analytics
+  useEffect(() => {setAnalytics('welcome'), []})
 
   const { data } = useContext(ClientDataContext)
 
