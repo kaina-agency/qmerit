@@ -1,8 +1,9 @@
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { useFormContext } from 'react-hook-form'
 import { ClientDataKey, ClientDataContext } from '../../hooks/client-data'
 import FormSection from '../form-section'
 import { FormSectionContext } from '../form-section-context'
+import { setPageName } from '../analytics'
 
 export const RentOrOwnContext: FormSectionContext = {
   component: RentOrOwn,
@@ -11,6 +12,8 @@ export const RentOrOwnContext: FormSectionContext = {
 }
 
 export default function RentOrOwn() {
+  useEffect(() => {setPageName('rent-or-own')}) // for adobe analytics
+
   const { register, trigger } = useFormContext()
   const { data, setValue } = useContext(ClientDataContext)
 

@@ -1,11 +1,12 @@
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import {ClientDataContext} from '../../hooks/client-data'
 import FormSection from '../form-section'
 import { FormSectionContext } from '../form-section-context'
+import { setPageName } from '../analytics'
 
 export const WelcomeSectionContext: FormSectionContext = {
   component: WelcomeSection,
-  key: 'welcome',
+  key: 'welcome-installation-request',
   mutates: []
 }
 
@@ -15,6 +16,8 @@ interface WelcomeSectionProps {
 }
 
 export default function WelcomeSection({ goNext, path }: WelcomeSectionProps) {
+  useEffect(() => {setPageName('welcome')}) // for adobe analytics
+
   const { data } = useContext(ClientDataContext)
 
   const welcomeMessage = (path === 'path1') ?

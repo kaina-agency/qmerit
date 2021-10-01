@@ -2,6 +2,7 @@ import FormSection from '../form-section'
 import {useContext, useEffect, useState } from 'react'
 import { ClientDataKey, ClientDataContext } from '../../hooks/client-data'
 import { FormSectionContext } from '../form-section-context'
+import { setPageName } from '../analytics'
 
 export const TermsContext: FormSectionContext = {
   component: Terms,
@@ -13,13 +14,12 @@ export const TermsContext: FormSectionContext = {
   ]
 }
 
-
 interface TermsProps {
   path: string
 }
 
-
 export default function Terms({path}: TermsProps) {
+  useEffect(() => {setPageName('terms')}) // for adobe analytics
 
   const { data, setValue, setData } = useContext(ClientDataContext)
   const [ acceptsTerms, setAcceptsTerms ] = useState(data.TERMS ?? false)

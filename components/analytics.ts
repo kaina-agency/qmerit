@@ -1,11 +1,8 @@
 function analytics() {
 	if (typeof window === 'object') {
 		window.addEventListener('load', () => {
-			const form = document.querySelector('form')
-			const orientation =
-				window.innerWidth >= window.innerHeight ? 'landscape' : 'portrait'
-			const lang =
-				window.location.host === 'www.offrerechargechevrolet.ca' ? 'fr' : 'en'
+			const isFrench = window.location.host === 'www.offrerechargechevrolet.ca'
+
 			let bp = 'small' // let's keep this real simple
 			if (window.innerWidth >= 420) bp = 'medium'
 			if (window.innerWidth >= 600) bp = 'large'
@@ -14,44 +11,49 @@ function analytics() {
 
 			window['digitalData'] = {
 				pageInfo: {
-					siteSectionsLevel1: 'welcome',
-					url: window.location.href,
-					seoStrategyPageName: document.title,
-					pageType: 'form',
-					languageSelected: lang,
-					siteName: document.title,
 					brand: 'chevrolet',
 					country: 'canada',
+					formName: 'installation request',
+					languageSelected: isFrench ? 'french' : 'english',
+					orientation:
+						window.innerWidth >= window.innerHeight ? 'landscape' : 'portrait',
+					pageName: `ch:NA:CA:${isFrench ? 'fr' : 'en'}:t1:index`,
+					pageSubType: '',
+					pageType: 'forms',
 					region: 'north america',
 					renderedExperience: bp,
+					seoStrategyPageName: document.title,
+					siteName: 'microsite_gm qmerit',
+					siteSectionsLevel1: 'installation-request-form',
+					siteSectionsLevel2: '',
+					siteSectionsLevel3: '',
+					siteSectionsLevel4: '',
+					siteSectionsLevel5: '',
+					url: window.location.href,
 					viewport: `${window.innerWidth}x${window.innerHeight}`,
-					orientation: orientation,
-					formName: 'installation request',
 				},
 			}
 
-			const observer = new MutationObserver((mutationsList) => {
-				const sections = form.querySelectorAll(
-					'[class^=form-section_container]'
-				)
-				const currentSection = sections[sections.length - 1]
-				const currentSectionTitle = currentSection
-					.querySelector('[class^=form-section_title]')
-					['innerText'].toLowerCase()
-					.replace(/ /g, '-')
-
-				if (window['digitalData'].siteSectionsLevel1 !== currentSectionTitle) {
-					window['digitalData'].siteSectionsLevel1 = currentSectionTitle
-					const _satellite = window['_satellite']
-					if (_satellite) _satellite.track('next-steps')
-				}
-			})
-			observer.observe(form, {
-				attributes: false,
-				childList: true,
-				subtree: true,
-			})
+			window.dispatchEvent(new Event('analytics-loaded'))
 		})
+	}
+}
+
+export function setPageName(name) {
+	if (typeof window === 'object') {
+		const isFrench = window.location.host === 'www.offrerechargechevrolet.ca'
+		const pageName = () => {
+			window['digitalData'].pageInfo.pageName = 
+				`ch:NA:CA:${isFrench ? 'fr' : 'en'}:t1:index:${name}`
+				window['digitalData'].pageInfo.siteSectionsLevel2 = name
+		}
+		if (window['digitalData']) {
+			pageName()
+		} else {
+			window.addEventListener('analytics-loaded', () => {
+				pageName()
+			})
+		}
 	}
 }
 

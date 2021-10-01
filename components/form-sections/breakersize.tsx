@@ -3,6 +3,7 @@ import { useFormContext } from 'react-hook-form'
 import { ClientDataKey, ClientDataContext } from '../../hooks/client-data'
 import FormSection from '../form-section'
 import { FormSectionContext } from '../form-section-context'
+import { setPageName } from '../analytics'
 
 export const BreakerSizeContext: FormSectionContext<BreakerSizeProps> = {
   component: BreakerSize,
@@ -16,6 +17,8 @@ interface BreakerSizeProps {
 }
 
 export default function BreakerSize({forceNext, onComplete}: BreakerSizeProps) {
+  useEffect(() => {setPageName('additional-details')}) // for adobe analytics
+
   const { register, reset } = useFormContext()
   const { data,  setData} = useContext(ClientDataContext)
   const [breakerSize, setBreakerSize] = useState(data.BREAKER_SIZE)

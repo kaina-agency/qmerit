@@ -3,6 +3,7 @@ import { useFormContext } from 'react-hook-form'
 import { ClientDataKey, ClientDataContext } from '../../hooks/client-data'
 import FormSection from '../form-section'
 import { FormSectionContext } from '../form-section-context'
+import { setPageName } from '../analytics'
 
 export const ContactInfoSectionContext: FormSectionContext = {
   component: ContactInfoSection,
@@ -22,6 +23,8 @@ export const ContactInfoSectionContext: FormSectionContext = {
 }
 
 export default function ContactInfoSection() {
+  useEffect(() => {setPageName('contact-info')}) // for adobe analytics
+
   const { register, formState: { errors }, trigger, getValues } = useFormContext()
   const { data, setData, setValue } = useContext(ClientDataContext)
 

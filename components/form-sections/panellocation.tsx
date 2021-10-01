@@ -3,6 +3,7 @@ import { useFormContext } from 'react-hook-form'
 import { ClientDataKey, ClientDataContext } from '../../hooks/client-data'
 import FormSection from '../form-section'
 import { FormSectionContext } from '../form-section-context'
+import { setPageName } from '../analytics'
 
 export const PanelLocationContext: FormSectionContext = {
   component: PanelLocation,
@@ -15,6 +16,8 @@ export const PanelLocationContext: FormSectionContext = {
 }
 
 export default function PanelLocation() {
+  useEffect(() => {setPageName('location')}) // for adobe analytics
+
   const { register, reset } = useFormContext()
   const { data, setData } = useContext(ClientDataContext)
 

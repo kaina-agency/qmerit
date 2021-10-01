@@ -1,15 +1,18 @@
-import { useContext, useState } from 'react'
+import { useContext, useState, useEffect } from 'react'
 import { ClientDataKey, ClientDataContext } from '../../hooks/client-data'
 import FormSection from '../form-section'
 import { FormSectionContext } from '../form-section-context'
+import { setPageName } from '../analytics'
 
 export const InstallLocationContext: FormSectionContext = {
   component: InstallLocation,
-  key: 'install-location',
+  key: 'location',
   mutates: [ClientDataKey.CHARGING_LOCATION_IMAGE_URL]
 }
 
 export default function InstallLocation() {
+  useEffect(() => {setPageName('location')}) // for adobe analytics
+
   const { data, setValue } = useContext(ClientDataContext)
   const [imageSelected, setImageSelected] = useState(false)
   const [imageURL, setUserImageURL] = useState(data.CHARGING_LOCATION_IMAGE_URL)

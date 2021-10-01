@@ -1,7 +1,8 @@
-import { useContext, useState } from 'react'
+import { useContext, useState, useEffect } from 'react'
 import { ClientDataKey, ClientDataContext } from '../../hooks/client-data'
 import FormSection from '../form-section'
 import { FormSectionContext } from '../form-section-context'
+import { setPageName } from '../analytics'
 
 export const PanelImagesContext: FormSectionContext = {
   component: PanelImages,
@@ -13,6 +14,8 @@ export const PanelImagesContext: FormSectionContext = {
 }
 
 export default function PanelImages() {
+  useEffect(() => {setPageName('upload-electrical-panel')}) // for adobe analytics
+
   const { data, setData } = useContext(ClientDataContext)
 
   const [panelLocationImageURL, setPanelLocationImageURL] = useState(data.PANEL_LOCATION_IMAGE_URL)
