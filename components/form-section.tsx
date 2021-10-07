@@ -1,6 +1,7 @@
 import { PropsWithChildren, useContext } from 'react'
 import { ClientDataContext } from '../hooks/client-data'
 import styles from './form-section.module.css'
+import { satelliteTrack } from './analytics'
 
 interface FormSectionProps {
   title: string,
@@ -15,7 +16,10 @@ export default function FormSection({ title, goNext, finale = false,label = null
   let nextButtonElement = <input
     data-dtm={nextButtonDTM}
     className={styles.nextBtn + ' rounded-full uppercase text-white stat-button-link'}
-    onClick={() => goNext()}
+    onClick={() => {
+      goNext();
+      nextButtonDTM === 'contact info' ? '' : satelliteTrack('next-steps')
+    }}
     type="button"
     value={data.LANGUAGE === 'en' ? (label ? label :'Next') : (label ? label : 'Suivant')}
   />

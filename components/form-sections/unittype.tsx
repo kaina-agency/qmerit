@@ -1,8 +1,9 @@
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import { useFormContext } from 'react-hook-form'
 import { ClientDataKey, ClientDataContext } from '../../hooks/client-data'
 import FormSection from '../form-section'
 import { FormSectionContext } from '../form-section-context'
+import { setAnalytics } from '../analytics'
 
 export const UnitTypeContext: FormSectionContext = {
   component: UnitType,
@@ -14,6 +15,8 @@ export const UnitTypeContext: FormSectionContext = {
 }
 
 export default function UnitType() {
+  useEffect(() => {setAnalytics('charging-unit-info')})
+  
   const { register, trigger,formState: { errors} , getValues } = useFormContext()
   const { data, setData } = useContext(ClientDataContext)
   const [brandError, setBrandError] = useState('')

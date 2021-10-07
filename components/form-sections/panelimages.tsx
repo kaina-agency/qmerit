@@ -1,7 +1,8 @@
-import { useContext, useState } from 'react'
+import { useContext, useState, useEffect } from 'react'
 import { ClientDataKey, ClientDataContext } from '../../hooks/client-data'
 import FormSection from '../form-section'
 import { FormSectionContext } from '../form-section-context'
+import { setAnalytics } from '../analytics'
 
 export const PanelImagesContext: FormSectionContext = {
   component: PanelImages,
@@ -13,6 +14,8 @@ export const PanelImagesContext: FormSectionContext = {
 }
 
 export default function PanelImages() {
+  useEffect(() => {setAnalytics('upload-electrical-panel')})
+
   const { data, setData } = useContext(ClientDataContext)
 
   const [panelLocationImageURL, setPanelLocationImageURL] = useState(data.PANEL_LOCATION_IMAGE_URL)
@@ -78,7 +81,7 @@ export default function PanelImages() {
       </label>
       <input
         className="opacity-0 stat-button-link"
-        data-dtm="upload:electrical panel"
+        data-dtm="upload: detailed electrical panel"
         type="file"
         name="picture"
         accept="image/*"
@@ -114,7 +117,7 @@ export default function PanelImages() {
           {data.LANGUAGE === 'en' ? 'Add Image' : 'AJOUTER IMAGE'}
         </label>
         <input  className="opacity-0 stat-button-link"
-          data-dtm="upload:detailed electrical panel"
+          data-dtm="upload: electrical panel"
           type="file"
           name="picture"
           accept="image/*"

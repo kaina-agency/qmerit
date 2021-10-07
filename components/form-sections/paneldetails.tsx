@@ -1,8 +1,9 @@
-import { useContext, useState } from 'react'
+import { useContext, useState, useEffect } from 'react'
 import { useFormContext } from 'react-hook-form'
 import { ClientDataKey, ClientDataContext } from '../../hooks/client-data'
 import FormSection from '../form-section'
 import { FormSectionContext } from '../form-section-context'
+import { setAnalytics } from '../analytics'
 
 export const PanelDetailsContext: FormSectionContext = {
   component: PanelDetails,
@@ -14,6 +15,8 @@ export const PanelDetailsContext: FormSectionContext = {
 }
 
 export default function PanelDetails() {
+  useEffect(() => {setAnalytics('eletrical-panel-info')})
+
   const { register } = useFormContext()
   const { data, setData } = useContext(ClientDataContext)
 

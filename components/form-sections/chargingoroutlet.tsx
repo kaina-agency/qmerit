@@ -1,8 +1,9 @@
-import { useContext, useState } from 'react'
+import { useContext, useState, useEffect } from 'react'
 import { useFormContext } from 'react-hook-form'
 import { ClientDataKey, ClientDataContext } from '../../hooks/client-data'
 import FormSection from '../form-section'
 import { FormSectionContext } from '../form-section-context'
+import { setAnalytics } from '../analytics'
 
 export const ChargingUnitOrOutletContext: FormSectionContext = {
   component: ChargingUnitOrOutlet,
@@ -11,6 +12,8 @@ export const ChargingUnitOrOutletContext: FormSectionContext = {
 }
 
 export default function ChargingUnitOrOutlet() {
+  useEffect(() => {setAnalytics('charging-unit-info')})
+
   const { register } = useFormContext()
   const { data, setValue } = useContext(ClientDataContext)
   const [ chargeType, setChargeType ] = useState(data.CHARGE_TYPE)

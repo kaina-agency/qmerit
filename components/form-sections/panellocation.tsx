@@ -3,6 +3,7 @@ import { useFormContext } from 'react-hook-form'
 import { ClientDataKey, ClientDataContext } from '../../hooks/client-data'
 import FormSection from '../form-section'
 import { FormSectionContext } from '../form-section-context'
+import { setAnalytics } from '../analytics'
 
 export const PanelLocationContext: FormSectionContext = {
   component: PanelLocation,
@@ -15,6 +16,8 @@ export const PanelLocationContext: FormSectionContext = {
 }
 
 export default function PanelLocation() {
+  useEffect(() => {setAnalytics('electrical-panel-location')})
+
   const { register, reset } = useFormContext()
   const { data, setData } = useContext(ClientDataContext)
 
